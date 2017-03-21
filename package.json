@@ -1,0 +1,15 @@
+{
+  "name": "cli-fuzzy-search",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {},
+  "author": "Nicolas Chambrier <naholyr@gmail.com> (http://naholyr.fr/)",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "draftlog": "^1.0.12"
+  },
+  "bin": {
+    "search-json": "bin/cli.js"
+  }
+}
