@@ -10,8 +10,8 @@ module.exports = (options = {}) => {
 		debug = false
 	} = options
 
-	if (typeof data !== 'function') {
-		return Promise.reject('Required option "data": function')
+	if (!data) {
+		return Promise.reject('Required option "data"')
 	}
 
 	return main(stdin, data, size, debug)

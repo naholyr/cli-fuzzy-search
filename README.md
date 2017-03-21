@@ -16,13 +16,13 @@ const search = require('cli-fuzzy-search')
 const options = {
 	stdin: process.stdin, // User input stream, must be a tty.ReadStream
 	size: 10, // Number of shown results
-	data: () => queryData() // A function returning promise of data
+	data: promisedDataset // A function returning promise of data
 }
 
 search(options) // Promise of selected result
 ```
 
-The only mandatory option is ``data``, a function called with no parameter and returning the dataset. It will be called each time user input is modified.
+The only mandatory option is ``data``, the whole (or promise of) dataset.
 
 User will be provided a list of suggestions depending on his input. When he presses ENTER, the promise returned by ``search`` is resolved with selected item.
 

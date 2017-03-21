@@ -7,11 +7,11 @@ const path = require('path')
 require('draftlog').into(console)
 
 
-const promisedContent = Promise.resolve(require(path.resolve(process.argv[2])))
-const data = () => promisedContent
-const nbOutputs = Number(process.argv[3]) || undefined
+const data = require(path.resolve(process.argv[2]))
+const size = Number(process.argv[3]) || undefined
+const debug = !!process.env.DEBUG
 
-require('../lib/main')(process.stdin, data, nbOutputs, !!process.env.DEBUG)
+require('../index')({ data, size, debug })
 .then(selected => {
 	console.log(JSON.stringify(selected))
 	process.exit(0)
