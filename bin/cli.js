@@ -13,7 +13,7 @@ const nbOutputs = Number(process.argv[3]) || undefined
 
 require('../lib/main')(process.stdin, data, nbOutputs, !!process.env.DEBUG)
 .then(selected => {
-	console.log('Selected show:', selected)
+	console.log(JSON.stringify(selected))
 	process.exit(0)
 })
 .catch(err => {
