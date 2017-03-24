@@ -16,7 +16,7 @@ const search = require('cli-fuzzy-search')
 const options = {
 	stdin: process.stdin, // User input stream, must be a tty.ReadStream
 	size: 10, // Number of shown results
-	data: promisedDataset // A function returning promise of data
+	data: promisedDataset // Promise([ { label, … } ])
 }
 
 search(options) // Promise of selected result
