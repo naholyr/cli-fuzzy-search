@@ -2,13 +2,14 @@
   "name": "cli-fuzzy-search",
   "description": "CLI library to provide a fuzzy search box with suggestions",
   "version": "1.0.1",
-  "main": "index.js",
+  "main": "lib/main.js",
   "repository": "git@github.com:naholyr/cli-fuzzy-search.git",
   "author": "Nicolas Chambrier <naholyr@gmail.com> (http://naholyr.fr/)",
   "license": "MIT",
   "dependencies": {
     "chalk": "^1.1.3",
-    "draftlog": "^1.0.12"
+    "draftlog": "^1.0.12",
+    "lodash.debounce": "^4.0.8"
   },
   "bin": {
     "search-json": "bin/cli.js"
