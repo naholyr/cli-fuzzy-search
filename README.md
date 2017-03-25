@@ -36,7 +36,8 @@ The only mandatory option is ``data``, it can be:
     * the string typed by user
     * the requested page (starting at 1)
   * this function is expected to return a promise of an object with following properties:
-    * `hasMore`: if true it means there are more pages, so when user reaches the end of the list the function will be called again with incremented page number to fetch the rest (until `hasMore` is falsy)
+    * `more`: if true it means there are more pages, so when user reaches the end of the list the function will be called again with incremented page number to fetch the rest (until `hasMore` is falsy)
+    * `total`: total number of results
     * `data`: the dataset, see above
 
 The eventually returned item is a copy of dataset's item. If fuzzy filter was applied, additional properties will be added:

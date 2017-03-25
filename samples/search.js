@@ -1,7 +1,7 @@
 'use strict'
 
 const prompt = require('../')
-const fuzzy = require('../lib/search')
+const fuzzy = require('../lib/fuzzy')
 
 // The search function
 
@@ -11,8 +11,9 @@ const search = (query, page) => new Promise(resolve => {
 	setTimeout(() => {
 		const results = filter(query)
 		resolve({
+			total: results.length,
 			data: results.slice((page - 1) * pagination, page * pagination),
-			hasMore: results.length > page * pagination
+			more: results.length > page * pagination
 		})
 	}, 250)
 })
