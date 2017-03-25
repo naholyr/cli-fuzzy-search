@@ -43,7 +43,7 @@ The only mandatory option is ``data``, it can be:
 The eventually returned item is a copy of dataset's item. If fuzzy filter was applied, additional properties will be added:
 
   * `highlight`: fuzzy-matching highlighted characters
-  * `index`: position (starting at 1), in the filtered list
+  * `index`: position (starting at 0) in the filtered list
 
 See sample usages in [samples folder](./samples/).
 
