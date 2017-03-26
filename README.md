@@ -10,27 +10,42 @@
 
 Install as usually with ``npm install --save cli-fuzzy-search`` or ``yarn add cli-fuzzy-search``.
 
+Most basic usage is with a fully loaded data-source and default options:
+
 ```js
 const search = require('cli-fuzzy-search')
 
-const options = {
-	stdin: process.stdin, // User input stream, must be a tty.ReadStream
-	size: 10, // Number of shown results
-	data: promisedDataset // Promise([ { label, … } ])
-	// or
-	search: searchFunction // (q: String, page: Number) => Promise({ hasMore: Boolean, data: Array })
-	fuzzyOnSearch: false   // Apply fuzzy filter on dataset returned by search(), should be useless if search function has consistent results
-}
+const options = { data: myDataset }
 
-search(options) // Promise of selected result
+search(options)
+.then(item => …)
+.catch(err => …)
 ```
 
-The only mandatory option is ``data``, it can be:
+### Options
 
-* the whole (or promise of) dataset, an array of objects with following properties:
+```js
+{
+	stdin: process.stdin,   // User input stream, must be a tty.ReadStream
+	size: 10,               // Number of shown results
+	debounceDelay: 300,     // Delay between last keystroke and actually filtering results
+
+	data: promisedDataset,  // Promise([ { label, … } ])
+
+	// or
+
+	search: searchFunction, // (q: String, page: Number) => Promise({ more: Boolean, total: Number, data: Array })
+	fuzzyOnSearch: false,   // Apply fuzzy filter on dataset returned by search(), if your search results really suck
+	cache: true             // Cache previous search results in memory
+}
+```
+
+You must provide `data` or `search`:
+
+* `data`: the whole (or promise of) dataset, an array of objects with following properties:
   * `label`: the string showed in list
   * any other property will be kept as-is
-* or a search function for asynchronous paginated search results:
+* `search`: a function for asynchronous paginated search results:
   * this function will be called each time user changes input
   * it will be called with two parameters:
     * the string typed by user
